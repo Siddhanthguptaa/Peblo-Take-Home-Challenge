@@ -1,9 +1,8 @@
 # PebloNote
 
 **AI-powered collaborative note-taking tool** that brings teams and individuals together to write, edit, and enhance content in real-time. Powered by **Tiptap**, **Hocuspocus**, and **Gemini API**, PebloNote offers intelligent summarization, grammar checks, and seamless collaboration—all in one place.
-DEMO- https://www.loom.com/share/44e4fcbc02e841ce90f15e4f5b62fccc
 ---
-
+DEMO- https://www.loom.com/share/44e4fcbc02e841ce90f15e4f5b62fccc
 ## Features
 
 * User authentication (Signup/Login) with refresh token support
