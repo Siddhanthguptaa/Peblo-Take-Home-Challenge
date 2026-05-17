@@ -84,9 +84,9 @@ DEMO- https://www.loom.com/share/44e4fcbc02e841ce90f15e4f5b62fccc
 
 <details>
 <summary>Landing Page</summary>
-
+<p align="center">
   <img src="https://github.com/user-attachments/assets/31e7e001-60b3-40b0-8967-883f95f9ccd4" width="600" />
-
+</p>
 
 </details>
 
