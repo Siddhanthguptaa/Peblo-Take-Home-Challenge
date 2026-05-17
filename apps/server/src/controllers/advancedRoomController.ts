@@ -86,7 +86,7 @@ export const toggleShare = async (req: Request, res: Response) => {
 
 export const getSharedRoom = async (req: Request, res: Response) => {
   try {
-    const { shareId } = req.params;
+    const shareId = req.params.shareId as string;
 
     const room = await prismaClient.room.findFirst({
       where: { shareId, isPublic: true },

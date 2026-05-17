@@ -23,8 +23,8 @@ const DemoSection = () => {
                   <div className="relative w-full pb-[56.25%]"> {/* 16:9 aspect ratio */}
                       <iframe
                           className="absolute top-0 left-0 w-full h-full"
-                          src="https://www.loom.com/embed/31e278eadd274949be8620c7f4828beb"
-                          title="YouTube video player"
+                          src="https://www.loom.com/embed/f9787f0b42c2411aa5aba796b7f02fb5"
+                          title="PebloNote Demo Video"
                           frameBorder="0"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                           referrerPolicy="strict-origin-when-cross-origin"

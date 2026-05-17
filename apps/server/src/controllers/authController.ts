@@ -27,7 +27,10 @@ export const signupController =  async (req:Request, res:Response) => {
 
     const existingUser =  await prismaClient.user.findFirst({
       where: {
-        email: parsedData.data.email
+        email: {
+          equals: parsedData.data.email,
+          mode: "insensitive"
+        }
       }
     })
     if (existingUser) {
@@ -36,10 +39,10 @@ export const signupController =  async (req:Request, res:Response) => {
     }
 
   try {
-    const hashedPassword = await bcryptjs.hash(parsedData.data.password, 10);
+    const hashedPassword = await bcryptjs.hash(trimmedPassword, 10);
     const user = await prismaClient.user.create({
       data: {
-        email: parsedData.data?.email,
+        email: parsedData.data.email.toLowerCase(),
         password: hashedPassword,
         name: parsedData.data.name
       }
@@ -69,20 +72,23 @@ export const loginController = async (req:Request, res:Response) => {
 
     const user = await prismaClient.user.findFirst({
       where: {
-        email: parsedData.data.email
+        email: {
+          equals: parsedData.data.email,
+          mode: "insensitive"
+        }
       }
     })
 
     if (!user) {
-      res.status(403).json({
+      res.status(401).json({
         message: "Not authorized"
       })
       return;
     }
 
-    const passwordMatch = await bcryptjs.compare(parsedData.data.password, user.password);
+    const passwordMatch = await bcryptjs.compare(parsedData.data.password.trim(), user.password);
     if (!passwordMatch) {
-      res.status(403).json({ message: "Invalid email or password" });
+      res.status(401).json({ message: "Invalid email or password" });
       return;
     }
 

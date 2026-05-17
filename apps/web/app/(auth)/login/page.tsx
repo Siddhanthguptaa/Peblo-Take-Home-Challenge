@@ -16,7 +16,7 @@ export default function Login() {
   async function handleLogin(e:React.FormEvent) {
     e.preventDefault();
 
-    const email = emailRef.current?.value;
+    const email = emailRef.current?.value.trim();
     const password = passwordRef.current?.value;
 
     if (!email || !password) {
