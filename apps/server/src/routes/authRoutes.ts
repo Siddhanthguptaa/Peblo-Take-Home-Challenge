@@ -1,0 +1,17 @@
+import express, { Router } from "express";
+import { loginController, logoutController, myInfoController, signupController, refreshTokenController } from "../controllers/authController";
+import { middleware } from "../middlewares/userMiddleware";
+
+const router:Router = express.Router();
+
+router.post("/signup", signupController)
+
+router.post("/login", loginController)
+
+router.post("/logout",middleware,logoutController);
+
+router.get("/me",middleware,myInfoController)
+
+router.post("/refresh", refreshTokenController)
+
+export default router;

@@ -1,0 +1,185 @@
+{
+  "POST /api/auth/signup": {
+    "request": {
+      "name": "Siddhanth Gupta",
+      "email": "siddhanth@example.com",
+      "password": "securepass123"
+    },
+    "response": {
+      "user": {
+        "id": 1,
+        "name": "Siddhanth Gupta",
+        "email": "siddhanth@example.com"
+      },
+      "accessToken": "eyJhbGciOiJIUzI1NiJ9...",
+      "refreshToken": "550e8400-e29b-41d4-a716-446655440000"
+    }
+  },
+  "GET /api/dashboard/rooms": {
+    "response": {
+      "rooms": [
+        {
+          "id": 1,
+          "slug": "project-alpha",
+          "title": "Project Alpha Notes",
+          "content": "<p>Meeting notes for project planning...</p>",
+          "isArchived": false,
+          "isPublic": false,
+          "shareId": null,
+          "adminId": 1,
+          "secretCode": "ABC12345",
+          "updatedAt": "2026-05-14T12:00:00Z",
+          "createdAt": "2026-05-14T10:00:00Z"
+        }
+      ]
+    }
+  },
+  "GET /api/dashboard/insights": {
+    "response": {
+      "totalRooms": 24,
+      "archivedRooms": 3,
+      "recentRooms": [
+        {
+          "id": 1,
+          "title": "Project Alpha Notes",
+          "updatedAt": "2026-05-14T12:00:00Z"
+        }
+      ],
+      "topTags": [
+        {
+          "name": "work",
+          "count": 12
+        },
+        {
+          "name": "meeting",
+          "count": 8
+        }
+      ],
+      "aiStats": {
+        "totalCalls": 47,
+        "totalTokensUsed": 28400,
+        "byType": [
+          {
+            "type": "SUMMARY",
+            "count": 22
+          },
+          {
+            "type": "ACTION_ITEMS",
+            "count": 18
+          },
+          {
+            "type": "TITLE_SUGGESTION",
+            "count": 7
+          }
+        ]
+      },
+      "weeklyActivity": [
+        {
+          "date": "Mon",
+          "count": 3
+        },
+        {
+          "date": "Tue",
+          "count": 5
+        },
+        {
+          "date": "Wed",
+          "count": 2
+        },
+        {
+          "date": "Thu",
+          "count": 7
+        },
+        {
+          "date": "Fri",
+          "count": 4
+        },
+        {
+          "date": "Sat",
+          "count": 1
+        },
+        {
+          "date": "Sun",
+          "count": 2
+        }
+      ]
+    }
+  },
+  "POST /api/room-advanced/:roomId/ai/action-items": {
+    "response": {
+      "actionItems": [
+        "Prepare UI mockups for dashboard redesign by Friday",
+        "Review API v2 structure with backend team",
+        "Update Q3 timeline in project management tool"
+      ]
+    }
+  },
+  "POST /api/room-advanced/:roomId/ai/title": {
+    "response": {
+      "suggestedTitle": "Sprint Planning — Q3 Roadmap Discussion"
+    }
+  },
+  "PATCH /api/room-advanced/:roomId/archive": {
+    "request": {
+      "isArchived": true
+    },
+    "response": {
+      "id": 1,
+      "isArchived": true,
+      "title": "Project Alpha Notes"
+    }
+  },
+  "PATCH /api/room-advanced/:roomId/share": {
+    "response": {
+      "id": 1,
+      "isPublic": true,
+      "shareId": "550e8400-e29b-41d4-a716-446655440000"
+    }
+  },
+  "GET /api/room-advanced/shared/:shareId": {
+    "response": {
+      "title": "Project Alpha Notes",
+      "content": "<p>Meeting notes...</p>",
+      "author": "Siddhanth Gupta",
+      "updatedAt": "2026-05-14T12:00:00Z"
+    }
+  },
+  "GET /api/tags": {
+    "response": [
+      {
+        "id": "tag-001",
+        "name": "work",
+        "count": 12
+      },
+      {
+        "id": "tag-002",
+        "name": "meeting",
+        "count": 8
+      }
+    ]
+  },
+  "POST /api/tags/:roomId/set": {
+    "request": {
+      "tags": ["work", "meeting", "important"]
+    },
+    "response": {
+      "tags": [
+        {
+          "id": "tag-001",
+          "name": "work",
+          "userId": 1
+        },
+        {
+          "id": "tag-002",
+          "name": "meeting",
+          "userId": 1
+        },
+        {
+          "id": "tag-003",
+          "name": "important",
+          "userId": 1
+        }
+      ]
+    }
+  }
+}
